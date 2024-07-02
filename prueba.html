@@ -1,0 +1,23 @@
+<div id="newsContainer" class="row pb-3">
+    <div class="container mt-5 pt-5 news-card" id="${this.id}" title="${this.titulo}" date="${this.fecha}" category="${this.categoria}">
+        <h1 class="mt-4" id="title">${this.titulo}</h1>
+        <p class="text-muted">Publicado el: <span id="date">${this.fecha}</span> | Autor: <span id="author">${this.autor}</span> | Deporte: <span id="category">${this.categoria}</span></p>
+        
+        <img src="${this.urlimg}" alt="Imagen del Artículo" class="img-fluid mb-4" id="image">
+        
+        <div class="row">
+            <div class="col-md-6">
+                <p id="highlighted-text">${this.textodestacado}</p>
+            </div>
+            <div class="col-md-6">
+                <p id="content">${this.descripcion}</p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <input type="button" class="btn btn-secondary" id="boton-editar-noticia" value="Editar">
+            <input type="button" class="btn btn-danger" id="boton-eliminar-noticia" value="Eliminar">
+            <div id="detalle-error" class="error"></div>
+        </div>
+    </div>
+</div>
