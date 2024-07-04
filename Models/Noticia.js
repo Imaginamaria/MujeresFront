@@ -48,10 +48,7 @@ export default class Noticia {
                         <div class="card-body">
                             <h5 class="card-subtitle">${this.subtitulo}</h5>
                             <p class="card-text">${this.textodestacado}</p>
-                            <div class="d-flex justify-content-between">
-                                <input type="button" class="btn btn-primary w-100 me-1 custom-button" id="form-editar-noticia" value="Editar Noticia" />
-                                <input type="button" class="btn btn-secondary w-100 ms-1 custom-button" id="form-borrar-noticia" value="Borrar Noticia" />
-                            </div>
+
                         </div>
                     </div>
                 </div>`;
@@ -76,10 +73,7 @@ export default class Noticia {
                             <div id="content" class="text-justify">${parrafos}</div>
                         </div>
                     </div>
-                    <div class="mt-4">
-                        <input type="button" class="btn btn-primary" id="boton-editar-prueba-noticia" value="Editar Prueba Noticia">
-                        <div id="detalle-error" class="error"></div>
-                    </div>
+
                 </div>
             </div>`;
     }

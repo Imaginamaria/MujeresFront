@@ -16,22 +16,23 @@ eventoClickCerrarSesion();
 const params = new URLSearchParams(window.location.search);
 const idNoticia = params.get("id");
 
-// function para mostrar un error en el detalle de editar mascota
+// function para mostrar un error en el detalle de editar noticia
 const mostrarError = (error) => {
   imprimir("editar-noticia-error", error);
 };
 
-// function para popular los campos de la mascota a editar
+// function para popular los campos de la noticia a editar
 const popularCampos = (data) => {
-  document.querySelector("#input-titulo").value = data.titulo;
-  document.querySelector("#input-subtitulo").value = data.subtitulo;
-  document.querySelector("#input-textodestacado").value = data.textodestacado;
-  document.querySelector("#select-categoria").value = data.categoria;
-  document.querySelector("#input-fecha").value = data.fecha;
-  document.querySelector("#input-autor").value = data.autor;
-  document.querySelector("#imput-img-url").value = data.urlimg;
-  document.querySelector("#input-descripcion").value = data.descripcion;
+  document.querySelector("#editar-titulo").value = data.titulo;
+  document.querySelector("#editar-subtitulo").value = data.subtitulo;
+  document.querySelector("#editar-textodestacado").value = data.textodestacado;
+  document.querySelector("#editar-categoria").value = data.categoria;
+  document.querySelector("#editar-fecha").value = data.fecha;
+  document.querySelector("#editar-autor").value = data.autor;
+  document.querySelector("#editar-img-url").value = data.urlimg;
+  document.querySelector("#editar-descripcion").value = data.descripcion;
 };
+
 
 // obtenemos la noticia por su id
 RequestsAPI.getNoticia(idNoticia)
@@ -44,14 +45,14 @@ RequestsAPI.getNoticia(idNoticia)
 document
   .querySelector("#boton-actualizar-noticia")
   .addEventListener("click", () => {
-    const titulo = obtenerValorInput("#input-titulo").value;
-    const subtitulo = obtenerValorInput("#input-subtitulo").value;
-    const textodestacado = obtenerValorInput("#editar-textodestacado").value;
-    const categoria = obtenerValorInput("#editar-categoria").value;
-    const fecha = obtenerValorInput("#editar-fecha").value;
-    const autor = obtenerValorInput("#editar-autor").value;
-    const urlimg = obtenerValorInput("#imput-img-url").value;
-    const descripcion = obtenerValorInput("#input-descripcion").value;
+    const titulo = obtenerValorInput("editar-titulo").value;
+    const subtitulo = obtenerValorInput("editar-subtitulo").value;
+    const textodestacado = obtenerValorInput("editar-textodestacado").value;
+    const categoria = obtenerValorInput("editar-categoria").value;
+    const fecha = obtenerValorInput("editar-fecha").value;
+    const autor = obtenerValorInput("editar-autor").value;
+    const urlimg = obtenerValorInput("editar-img-url").value;
+    const descripcion = obtenerValorInput("editar-descripcion").value;
 
     if (
       !titulo ||
@@ -67,6 +68,8 @@ document
       imprimir("editar-noticia-error", "Por favor complete todos los campos");
       return;
     }
+
+    console.log(titulo)
 
     // hacemos el fetch, usando el metodo update de request api
     RequestsAPI.putNoticia(

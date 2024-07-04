@@ -68,10 +68,10 @@ document.querySelector("#boton-filtro").addEventListener("click", () => {
     const filtroFecha = obtenerValorInput("input-filtro-fecha");
 
     // Convertimos la fecha al formato correcto
-    const formattedFecha = filtroFecha ? formatDate(filtroFecha) : "";
+    //const formattedFecha = filtroFecha ? formatDate(filtroFecha) : "";
 
     // Llamamos a la API de nuevo, pero con los filtros
-    RequestsAPI.getNoticias({ filtroTitulo, filtroFecha: formattedFecha, filtroCategoria })
+    RequestsAPI.getNoticias({ filtroTitulo, filtroFecha, filtroCategoria })
         .then(mostrarCardNoticias)
         .catch(mostrarError);
 });

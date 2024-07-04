@@ -23,7 +23,7 @@ const mostrarError = (error) => {
     imprimir("detalle-error", error);
   };
 
-  // function para mostrar el detalle de la mascota
+  // function para mostrar el detalle de la noticia
   const mostrarDetalle = (data) => {
     // limpiamos el error en caso de que exista
     imprimir("detalle-error", "");  
@@ -42,14 +42,14 @@ const mostrarError = (error) => {
     imprimir("detalle", noticia.mostrarDetalle());
   };
 
-  // evento click para redirigir a la pagina de editar mascota
+  // evento click para redirigir a la pagina de editar noticia
   document
     .querySelector("#boton-editar-noticia")
     .addEventListener("click", () => {
       document.location.replace(`editar-noticia.html?id=${idNoticia}`);
     });
 
-    // evento click para eliminar la mascota
+    // evento click para eliminar la noticia
     document
     .querySelector("#boton-eliminar-noticia")
     .addEventListener("click", () => {
@@ -62,7 +62,7 @@ const mostrarError = (error) => {
         });
     });
 
-    // obtenemos la mascota por su id
+    // obtenemos la noticia por su id
     RequestsAPI.getNoticia(idNoticia)
     .then(mostrarDetalle)
     .catch((error) => {
