@@ -12,7 +12,15 @@ validarSesion();
 // agregamos evento click al botón de cerrar sesión
 eventoClickCerrarSesion();
 
-// function para mostrar las cards de noticias
+// función para normalizar cadenas de texto eliminando acentos y convirtiendo a minúsculas
+const normalizarTexto = (texto) => {
+    return texto
+        .normalize("NFD") // Descompone caracteres acentuados en caracteres simples + diacríticos
+        .replace(/[\u0300-\u036f]/g, "") // Elimina los diacríticos
+        .toLowerCase(); // Convierte a minúsculas
+};
+
+// función para mostrar las cards de noticias
 const mostrarCardNoticias = (data) => {
     console.log(data);
     // limpiamos el error en caso de que exista
@@ -51,15 +59,6 @@ const mostrarError = (error) => {
     imprimir("newsContainer-error", error);
 }
 
-// función para convertir la fecha al formato YYYY-MM-DD
-const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-}
-
 // evento click para filtrar la lista de noticias
 document.querySelector("#boton-filtro").addEventListener("click", () => {
     // obtenemos los valores de los inputs
@@ -67,13 +66,19 @@ document.querySelector("#boton-filtro").addEventListener("click", () => {
     const filtroCategoria = obtenerValorInput("input-filtro-categoria");
     const filtroFecha = obtenerValorInput("input-filtro-fecha");
 
-    // Convertimos la fecha al formato correcto
-    //const formattedFecha = filtroFecha ? formatDate(filtroFecha) : "";
-
     // Llamamos a la API de nuevo, pero con los filtros
-    RequestsAPI.getNoticias({ filtroTitulo, filtroFecha, filtroCategoria })
-        .then(mostrarCardNoticias)
-        .catch(mostrarError);
+    RequestsAPI.getNoticias().then((data) => {
+        const noticiasFiltradas = data.filter((noticia) => {
+            const tituloNormalizado = normalizarTexto(noticia.titulo);
+            const filtroTituloNormalizado = normalizarTexto(filtroTitulo);
+            const categoriaCoincide = !filtroCategoria || noticia.categoria === filtroCategoria;
+            const fechaCoincide = !filtroFecha || noticia.fecha === filtroFecha;
+
+            return tituloNormalizado.includes(filtroTituloNormalizado) && categoriaCoincide && fechaCoincide;
+        });
+
+        mostrarCardNoticias(noticiasFiltradas);
+    }).catch(mostrarError);
 });
 
 // obtenemos las cards de noticias
