@@ -6,22 +6,22 @@ import {
 } from "../utils/functions.js";
 import { RequestsAPI } from "../RequestsAPI.js";
 
-// validamos la sesion del usuario
+// Validamos la sesión del usuario
 validarSesion();
 
-// agregamos evento click al boton de cerrar sesion
+// Agregamos evento click al botón de cerrar sesión
 eventoClickCerrarSesion();
 
-// obtenemos el id de al noticoa
+// Obtenemos el id de la noticia
 const params = new URLSearchParams(window.location.search);
 const idNoticia = params.get("id");
 
-// function para mostrar un error en el detalle de editar noticia
+// Función para mostrar un error en el detalle de editar noticia
 const mostrarError = (error) => {
   imprimir("editar-noticia-error", error);
 };
 
-// function para popular los campos de la noticia a editar
+// Función para popular los campos de la noticia a editar
 const popularCampos = (data) => {
   document.querySelector("#editar-titulo").value = data.titulo;
   document.querySelector("#editar-subtitulo").value = data.subtitulo;
@@ -33,67 +33,61 @@ const popularCampos = (data) => {
   document.querySelector("#editar-descripcion").value = data.descripcion;
 };
 
-
-
-
-// obtenemos la noticia por su id
+// Obtenemos la noticia por su id
 RequestsAPI.getNoticia(idNoticia)
   .then(popularCampos)
   .catch((error) => {
     mostrarError(error);
   });
 
-
-
-// evento click para actualizar la noticia
+// Evento click para actualizar la noticia
 document
   .querySelector("#boton-actualizar-noticia")
   .addEventListener("click", () => {
-    const titulo = obtenerValorInput("editar-titulo").value;
-    const subtitulo = obtenerValorInput("editar-subtitulo").value;
-    const textodestacado = obtenerValorInput("editar-textodestacado").value;
-    const categoria = obtenerValorInput("editar-categoria").value;
-    const fecha = obtenerValorInput("editar-fecha").value;
-    const autor = obtenerValorInput("editar-autor").value;
-    const urlimg = obtenerValorInput("editar-img-url").value;
-    const descripcion = obtenerValorInput("editar-descripcion").value;
-  
+    const titulo = obtenerValorInput("editar-titulo");
+    const subtitulo = obtenerValorInput("editar-subtitulo");
+    const textodestacado = obtenerValorInput("editar-textodestacado");
+    const categoria = obtenerValorInput("editar-categoria");
+    const fecha = obtenerValorInput("editar-fecha");
+    const autor = obtenerValorInput("editar-autor");
+    const urlimg = obtenerValorInput("editar-img-url");
+    const descripcion = obtenerValorInput("editar-descripcion");
 
- //   if (
-//    !titulo ||
-//      !subtitulo ||
-//      !textodestacado ||
-  //    !categoria ||
- //     !fecha ||
-   //   !autor ||
- //     !urlimg ||
- //     !descripcion
- //   ) {
-  //    // mostramos un error si los campos estan vacios
-  //    imprimir("editar-noticia-error", "Por favor complete todos los campos");
-  //    return;
-  //  }
-   
-    
+    // Validamos que todos los campos estén presentes
+    if (
+      !titulo ||
+      !subtitulo ||
+      !textodestacado ||
+      !categoria ||
+      !fecha ||
+      !autor ||
+      !urlimg ||
+      !descripcion
+    ) {
+      mostrarError("Todos los campos son requeridos.");
+      return;
+    }
 
-    // hacemos el fetch, usando el metodo update de request api
-    RequestsAPI.putNoticia(
-      idNoticia,
-      titulo,
-      subtitulo,
-      textodestacado,
-      categoria,
-      fecha,
-      autor,
-      urlimg,
-      descripcion
-    )
+    // Convertimos los datos en el formato correcto (string)
+// Creación del objeto noticiaActualizada
+const noticiaActualizada = {
+  titulo: titulo.replace(/"/g, ''), // Reemplazar comillas dobles por vacío
+  subtitulo: subtitulo.replace(/"/g, ''),
+  textodestacado: textodestacado.replace(/"/g, ''),
+  categoria: categoria.replace(/"/g, ''),
+  fecha: fecha.replace(/"/g, ''),
+  autor: autor.replace(/"/g, ''),
+  urlimg: urlimg.replace(/"/g, ''),
+  descripcion: descripcion.replace(/"/g, ''),
+};
+    console.log("Noticia actualizada:", noticiaActualizada);
+
+    // Actualizamos la noticia en el servidor
+    RequestsAPI.putNoticia(idNoticia, noticiaActualizada)
       .then(() => {
-        // si el registro es exitoso, redirigimos al usuario a la pagina de login
         document.location.replace(`detalle-noticia.html?id=${idNoticia}`);
       })
       .catch((error) => {
-        // si hay un error al actulizar la noticia, mostramos un error
-        imprimir("editar-noticia-error", error);
+        mostrarError(error);
       });
   });

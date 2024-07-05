@@ -9,135 +9,89 @@
     <title>Mujeres al Deporte - Panel de Noticias</title>
 </head>
 <body>
-
-
     <!-- navbar -->
     <nav class="navbar navbar-expand-lg bg-white py-3 fixed-top">
         <div class="container">
-
             <a href="index.html" class="navbar-brand"><img src="img/isomujeres_rojo.svg" alt="logo mujeres al deporte" width="100px"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navmenu">
                 <ul class="navbar-nav ml-auto ms-auto text-white">
                     <li><span class="navbar-text me-3">Bienvenido al panel de editores</span></li>
                     <li><a href="login.html" id="boton-logout" class="nav-link btn btn-primary">Logout</a></li>
-
-
-
                 </ul>
-                
             </div>
-
-
         </div>
-
-
     </nav>
-
-
-
     <div class="container-fluid mt-6 text-center">
         <h1 class="mb-2 pt-4">Panel de Editor de Noticias </h1>
     </div>
-
     <!-- section noticia -->
     <section id="noticia" class="p5 bg-light text-dark">
-
-
-
-        
-
-            <div class="container mt-5">
-                <h2 class="mb-4 pt-5 text-center">Editar Noticia</h2>
-                    <form id="article-form">
-
-        
-
-                        <div class="form-group mb-4">
-                            <label for="editar-titulo">Título de la Noticia</label>
-                            <input type="text" class="form-control mt-2 editar-titulo" id="editar-titulo" required>
-                        </div>
-
-                        <div class="form-group mb-4">
-                                <label for="editar-subtitulo">Subtítulo</label>
-                                <input type="text" class="form-control mt-2 editar-subtitulo" id="editar-subtitulo" required>
-                        </div>
-
-
-                        <div class="form-group mb-4">
-                            <label for="editar-img-url">URL de la Imagen</label>
-                            <input type="url" class="form-control mt-2 editar-img-url" id="editar-img-url">
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="editar-descripcion">Descripción de la Noticia</label>
-                            <textarea class="form-control mt-2 editar-descripcion" id="editar-descripcion" rows="5" required></textarea>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="editar-textodestacado">Texto Destacado</label>
-                            <textarea class="form-control mt-2 editar-textodestacado" id="editar-textodestacado" rows="2" required></textarea>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="editar-categoria">Categoría</label>
-                            <select class="form-control mt-2 editar-categoria" id="editar-categoria" required>
-                                <option value="" disabled selected>Seleccione la categoría</option>
-                                <option value="atletismo">Atletismo</option>
-                                <option value="basketball">Basketball</option>
-                                <option value="ciclismo">Ciclismo</option>
-                                <option value="canotaje">Canotaje</option>
-                                <option value="futbol">Fútbol</option>
-                                <option value="gimnasia">Gimnasia Artística</option>
-                                <option value="golf">Golf</option>
-                                <option value="handball">Handball</option>
-                                <option value="hockey">Hockey</option>
-                                <option value="natacion">Natación</option>
-                                <option value="nado">Nado Sincronizado</option>
-                                <option value="artesmarciales">Artes Marciales</option>
-                                <option value="paleta">Paleta</option>
-                                <option value="remo">Remo</option>
-                                <option value="rugby">Rugby</option>
-                                <option value="surf">Surf</option>
-                                <option value="tenis">Tenis</option>
-                                <option value="vela">Vela</option>
-                                <option value="volleyball">Volleyball</option>                                     
-
-                            </select>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="editar-fecha">Fecha de Publicación</label>
-                            <input type="text" class="form-control mt-2 editar-fecha" id="editar-fecha" required>
-                        </div>
-
-                        <div class="form-group mb-4">
-                            <label for="editar-autor">Autor</label>
-                            <input type="text" class="form-control mt-2 editar-autor" id="editar-autor" required>
-                        </div>
-
-                        <button type="button" class="btn btn-primary mt-3 mb-5" id="boton-actualizar-noticia">Actualizar Noticia</button>
-                        <a href="panel-mujeres.html" class="btn btn-secondary mt-3 mb-5">Regresar al Panel</a>
-
-                    </form>
-                    <div id="editar-noticia-error" class="error"></div>
-                
-    
-            </div>
-
-        
+        <div class="container mt-5">
+            <h2 class="mb-4 pt-5 text-center">Editar Noticia</h2>
+            <form id="article-form">
+                <div class="form-group mb-4">
+                    <label for="editar-titulo">Título de la Noticia</label>
+                    <input type="text" class="form-control mt-2" id="editar-titulo" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-subtitulo">Subtítulo</label>
+                    <input type="text" class="form-control mt-2" id="editar-subtitulo" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-img-url">URL de la Imagen</label>
+                    <input type="url" class="form-control mt-2" id="editar-img-url">
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-descripcion">Descripción de la Noticia</label>
+                    <textarea class="form-control mt-2" id="editar-descripcion" rows="5" required></textarea>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-textodestacado">Texto Destacado</label>
+                    <textarea class="form-control mt-2" id="editar-textodestacado" rows="2" required></textarea>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-categoria">Categoría</label>
+                    <select class="form-control mt-2" id="editar-categoria" required>
+                        <option value="" disabled selected>Seleccione la categoría</option>
+                        <option value="atletismo">Atletismo</option>
+                        <option value="basketball">Basketball</option>
+                        <option value="ciclismo">Ciclismo</option>
+                        <option value="canotaje">Canotaje</option>
+                        <option value="futbol">Fútbol</option>
+                        <option value="gimnasia">Gimnasia Artística</option>
+                        <option value="golf">Golf</option>
+                        <option value="handball">Handball</option>
+                        <option value="hockey">Hockey</option>
+                        <option value="natacion">Natación</option>
+                        <option value="nado">Nado Sincronizado</option>
+                        <option value="artesmarciales">Artes Marciales</option>
+                        <option value="paleta">Paleta</option>
+                        <option value="remo">Remo</option>
+                        <option value="rugby">Rugby</option>
+                        <option value="surf">Surf</option>
+                        <option value="tenis">Tenis</option>
+                        <option value="vela">Vela</option>
+                        <option value="volleyball">Volleyball</option>                                     
+                    </select>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-fecha">Fecha de Publicación</label>
+                    <input type="text" class="form-control mt-2" id="editar-fecha" required>
+                </div>
+                <div class="form-group mb-4">
+                    <label for="editar-autor">Autor</label>
+                    <input type="text" class="form-control mt-2" id="editar-autor" required>
+                </div>
+                <button type="button" class="btn btn-primary mt-3 mb-5" id="boton-actualizar-noticia">Actualizar Noticia</button>
+                <a href="panel-mujeres.html" class="btn btn-secondary mt-3 mb-5">Regresar al Panel</a>
+            </form>
+            <div id="editar-noticia-error" class="error"></div>
+        </div>
     </section>
-
-
-
-
-
     <!-- footer -->
-
-
     <footer class="p-5 bg-dark text-white text-center position-relative">
         <div class="container-fluid">
             <p class="lead">Copyright &copy; 2024 Mujeres al Deporte</p>
@@ -146,13 +100,6 @@
             </a>
         </div>
     </footer>
-
-    
-    
-    
-        
-    
-    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="js/editar-noticia.js" type="module"></script>
 </body>

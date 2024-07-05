@@ -113,9 +113,8 @@ export class RequestsAPI{
 
   
   // put /noticia/:idNoticia
-  static putNoticia(idNoticia, categoria, titulo, subtitulo, urlimg, descripcion, textodestacado, fecha, autor) {
-    // en este caso, recibo los datos (categoria, titulo, subtitulo, urlimg, descripcion, textodestacado, fecha, autor) como parametros y los convierto en un objeto body. Tambien podemos recibir un objeto body como parametro como en el caso de postNoticia.
-    const body = JSON.stringify({ categoria, titulo, subtitulo, urlimg, descripcion, textodestacado, fecha, autor });
+  static putNoticia(idNoticia, noticiaActualizada) {
+    const body = JSON.stringify(noticiaActualizada);
     return fetch(obtenerUrl(`noticia/${idNoticia}`), {
       method: "PUT",
       headers,
