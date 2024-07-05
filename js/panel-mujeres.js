@@ -12,7 +12,7 @@ validarSesion();
 // agregamos evento click al botón de cerrar sesión
 eventoClickCerrarSesion();
 
-// función para normalizar cadenas de texto eliminando acentos y convirtiendo a minúsculas
+// función para normalizar cadenas de texto eliminando acentos y convirtiendo a minúsculas - pedi ayuda de AI
 const normalizarTexto = (texto) => {
     return texto
         .normalize("NFD") // Descompone caracteres acentuados en caracteres simples + diacríticos

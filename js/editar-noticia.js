@@ -34,12 +34,16 @@ const popularCampos = (data) => {
 };
 
 
+
+
 // obtenemos la noticia por su id
 RequestsAPI.getNoticia(idNoticia)
   .then(popularCampos)
   .catch((error) => {
     mostrarError(error);
   });
+
+
 
 // evento click para actualizar la noticia
 document
@@ -53,23 +57,24 @@ document
     const autor = obtenerValorInput("editar-autor").value;
     const urlimg = obtenerValorInput("editar-img-url").value;
     const descripcion = obtenerValorInput("editar-descripcion").value;
+  
 
-    if (
-      !titulo ||
-      !subtitulo ||
-      !textodestacado ||
-      !categoria ||
-      !fecha ||
-      !autor ||
-      !urlimg ||
-      !descripcion
-    ) {
-      // mostramos un error si los campos estan vacios
-      imprimir("editar-noticia-error", "Por favor complete todos los campos");
-      return;
-    }
-
-    console.log(titulo)
+ //   if (
+//    !titulo ||
+//      !subtitulo ||
+//      !textodestacado ||
+  //    !categoria ||
+ //     !fecha ||
+   //   !autor ||
+ //     !urlimg ||
+ //     !descripcion
+ //   ) {
+  //    // mostramos un error si los campos estan vacios
+  //    imprimir("editar-noticia-error", "Por favor complete todos los campos");
+  //    return;
+  //  }
+   
+    
 
     // hacemos el fetch, usando el metodo update de request api
     RequestsAPI.putNoticia(
