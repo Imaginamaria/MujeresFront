@@ -37,7 +37,7 @@ const manejarErrores =(error = new Error("Error desconocido"))=>{
 // RequestsAPI es una clase que contiene las funciones que se encargan de realizar las peticiones fetch al backend de manera ordenada y centralizada.
 export class RequestsAPI{
 
-    static urlBaseBackend = "http://localhost:3000";
+    static urlBaseBackend = "https://apimujeres-back.onrender.com";
 
     // post /login
 
